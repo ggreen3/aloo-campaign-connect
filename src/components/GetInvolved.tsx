@@ -17,20 +17,20 @@ export const GetInvolved = () => {
     try {
       const form = e.currentTarget;
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_your_service_id',
+        'template_your_template_id',
         form,
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        'your_public_key'
       );
 
       toast({
-        title: "Thank you for your support!",
-        description: "We'll be in touch soon with campaign updates.",
+        title: "Gratias tibi! (Thank you!)",
+        description: "Your message has been sent. Pro bono publico - for the public good.",
       });
       form.reset();
     } catch (error) {
       toast({
-        title: "Error",
+        title: "Error Juris (Error of Law)",
         description: "There was an error sending your message. Please try again.",
         variant: "destructive",
       });
@@ -41,18 +41,36 @@ export const GetInvolved = () => {
 
   return (
     <div id="get-involved" className="py-20 bg-campaign-navy text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop')] opacity-10 bg-cover bg-center" />
+      <div className="absolute inset-0">
+        <video 
+          className="w-full h-full object-cover opacity-10"
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="https://player.vimeo.com/external/528726481.sd.mp4?s=a845b998f9f8a316213d3c623ac5b4afc4d5ccea&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
+        </video>
+      </div>
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2 
-          className="text-4xl font-bold text-center mb-16"
+          className="text-4xl font-bold text-center mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Get Involved
+          Vox Populi, Vox Dei
         </motion.h2>
+        <motion.p 
+          className="text-xl text-center mb-16 text-campaign-gold italic"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          The voice of the people is the voice of God
+        </motion.p>
         <motion.div 
-          className="max-w-md mx-auto"
+          className="max-w-md mx-auto glass-morphism p-8 rounded-lg"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +97,7 @@ export const GetInvolved = () => {
             <div>
               <Textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="Pro Bono Publico - Share your thoughts for the public good"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60 min-h-[100px]"
                 required
               />
@@ -89,7 +107,7 @@ export const GetInvolved = () => {
               className="w-full bg-campaign-burgundy hover:bg-campaign-burgundy/90 text-white transform transition-transform hover:scale-105"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : "Join the Movement"}
+              {isSubmitting ? "Sending..." : "Carpe Diem - Seize the Day!"}
             </Button>
           </form>
         </motion.div>
